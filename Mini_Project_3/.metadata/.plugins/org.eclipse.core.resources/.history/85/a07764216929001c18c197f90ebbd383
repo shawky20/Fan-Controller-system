@@ -1,0 +1,9 @@
+/*
+ * dc_motor.c
+ *
+ *  Created on: Oct 10, 2021
+ *      Author: LENOVO
+ */
+
+#include "dc_motors.h"
+#include "common_macros.h"

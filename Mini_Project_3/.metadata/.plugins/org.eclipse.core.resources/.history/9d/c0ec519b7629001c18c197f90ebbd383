@@ -1,0 +1,69 @@
+/*
+ * project.c
+ *
+ *  Created on: Oct 10, 2021
+ *      Author: LENOVO
+ */
+
+
+#include "lcd.h"
+#include "lm35_sensor.h"
+#include "dc_motor.h"
+#include "adc.h"
+
+int main(void){
+	uint8 temp =0;
+
+	ADC_ConfigType adc_config={INTERNAL,F_CPU_8}; /* we will use the internal voltage reference = 2.56 and pre-scalar = 8*/
+
+	ADC_init(&adc_config);
+	LCD_init();
+	DcMotor_init();
+
+	LCD_moveCursor(0,4);
+	LCD_displayString("FAN is ");
+	LCD_moveCursor(1,4);
+	LCD_displayString("Temp =     C");
+
+	while(1){
+		temp = LM35_getTemperature();
+
+		if(temp < 30){
+			DcMotor_Rotate(STOP,0);
+		}
+		else if(temp >= 30){
+			DcMotor_Rotate(CW,25);
+		}
+		else if(temp >= 60 ){
+			DcMotor_Rotate(CW,50);
+		}
+		else if(temp >= 90 ){
+			DcMotor_Rotate(CW,75);
+		}
+		else if(temp >= 120 ){
+			DcMotor_Rotate(CW,100);
+		}
+
+		if(temp < 30 ){
+			LCD_moveCursor(0,11);
+			LCD_displayString("OFF");
+		}
+		else{
+			LCD_moveCursor(0,11);
+			LCD_displayString("ON");
+		}
+
+		LCD_moveCursor(1,11);
+		if(temp >= 100)
+		{
+			LCD_intgerToString(temp);
+		}
+		else
+		{
+			LCD_intgerToString(temp);
+			/* In case the digital value is two or one digits print space in the next digit place */
+			LCD_displayCharacter(' ');
+		}
+	}
+}
+

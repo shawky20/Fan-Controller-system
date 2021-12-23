@@ -1,0 +1,15 @@
+/*
+ * dc_motor.h
+ *
+ *  Created on: Oct 10, 2021
+ *      Author: LENOVO
+ */
+
+#ifndef DC_MOTOR_H_
+#define DC_MOTOR_H_
+
+#include "std_types.h"
+
+
+
+#endif /* DC_MOTOR_H_ */

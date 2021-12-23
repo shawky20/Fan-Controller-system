@@ -1,0 +1,24 @@
+/*
+ * dc_motor.c
+ *
+ *  Created on: Oct 10, 2021
+ *      Author: LENOVO
+ */
+
+#include "dc_motor.h"
+#include "common_macros.h"
+#include "gpio.h"
+
+
+/*******************************************************************************
+ *                      Functions Definitions                                  *
+ *******************************************************************************/
+
+void DcMotor_init(void){
+	/*set PB0 and PB1 direction as output*/
+	GPIO_setupPinDirection(PORTB_ID, PIN0_ID,PIN_OUTPUT);
+	GPIO_setupPinDirection(PORTB_ID, PIN1_ID,PIN_OUTPUT);
+	/* the motor stop at the beginning */
+	GPIO_writePin(PORTB_ID, PIN1_ID,LOGIC_LOW);
+	GPIO_writePin(PORTB_ID, PIN1_ID,LOGIC_LOW);
+}

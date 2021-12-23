@@ -1,0 +1,36 @@
+/*
+ * dc_motor.c
+ *
+ *  Created on: Oct 10, 2021
+ *      Author: LENOVO
+ */
+
+#include "dc_motor.h"
+#include "common_macros.h"
+#include "gpio.h"
+
+
+/*******************************************************************************
+ *                      Functions Definitions                                  *
+ *******************************************************************************/
+
+
+/*
+ * Description :
+ * The Function responsible for setup the direction for the two motor pins through the GPIO driver.
+ * Stop at the DC-Motor at the beginning through the GPIO driver.
+ */
+
+void DcMotor_init(void){
+	/*set PB0 and PB1 direction as output*/
+	GPIO_setupPinDirection(PORTB_ID, PIN0_ID,PIN_OUTPUT);
+	GPIO_setupPinDirection(PORTB_ID, PIN1_ID,PIN_OUTPUT);
+	/* the motor stop at the beginning */
+	GPIO_writePin(PORTB_ID, PIN1_ID,LOGIC_LOW);
+	GPIO_writePin(PORTB_ID, PIN1_ID,LOGIC_LOW);
+}
+
+
+void DcMotor_Rotate(DcMotor_State state,uint8 speed){
+
+}

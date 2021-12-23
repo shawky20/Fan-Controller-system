@@ -1,0 +1,19 @@
+/*
+ * pwm.h
+ *
+ *  Created on: Oct 10, 2021
+ *      Author: LENOVO
+ */
+
+#ifndef PWM_H_
+#define PWM_H_
+
+#include "std_types.h"
+
+/*
+ * Description :
+ * The Function responsible for starting TIMER0 in PWM mode
+ */
+void PWM_Timer0_start(unsigned char set_duty_cycle);
+
+#endif /* PWM_H_ */

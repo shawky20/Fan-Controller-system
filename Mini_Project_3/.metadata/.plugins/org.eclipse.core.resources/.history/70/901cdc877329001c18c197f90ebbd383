@@ -1,0 +1,23 @@
+/*
+ * project.c
+ *
+ *  Created on: Oct 10, 2021
+ *      Author: LENOVO
+ */
+
+
+#include "lcd.h"
+#include "lm35_sensor.h"
+#include "dc_motor.h"
+
+
+int main(void){
+	ADC_ConfigType adc_config={INTERNAL,F_CPU_8};
+	ADC_init(&adc_config);
+	LCD_init();
+
+	while(1){
+
+	}
+}
+
